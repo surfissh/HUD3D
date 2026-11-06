@@ -41,6 +41,11 @@ esac
 export IRISVIEW_KIT="$KIT"
 export FUSIONUI_DEVELOPER_KIT_ROOT="$KIT"
 
+# package 的默认输出目录（不依赖 vp 的任务缓存是否重跑 mkdir）。
+if [ "${1:-}" = "package" ]; then
+  mkdir -p "$ROOT/release"
+fi
+
 # 可选：把 Kit 的 state 目录放到工作区内（默认是 ~/IrisView-Developer-Kit-Data）。
 if [ "${1:-}" = "run" ] && [ -n "${IRISVIEW_STATE_DIR:-}" ]; then
   set -- "$@" --state-dir "$IRISVIEW_STATE_DIR"

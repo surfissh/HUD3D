@@ -16,7 +16,7 @@
     "verify": "sh scripts/kit.sh test .",
     "test": "npm run verify",
     "build": "sh scripts/kit.sh build .",
-    "package": "mkdir -p release && sh scripts/kit.sh package . --debug-unsigned --output release/oven-hud.fuiapp",
+    "package": "sh scripts/kit.sh package . --debug-unsigned --output release/oven-hud.fuiapp",
     "start": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent",
     "dev": "npm run build && npm run package && npm start",
     "run:stereo": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent --display-mode stereo",
