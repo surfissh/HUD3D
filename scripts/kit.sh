@@ -3,6 +3,9 @@
 # 再用 scripts/irisview.py 调用 Kit（开发模式下绕过 Ubuntu-only 的 host gate）。
 set -eu
 
+# 与 Kit 自带入口一致：不要往 Kit 目录里写 __pycache__。
+export PYTHONDONTWRITEBYTECODE=1
+
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$ROOT"
 
