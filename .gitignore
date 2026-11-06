@@ -3,6 +3,7 @@
 /IrisView-Platform-Alpha-中英双语版-v3/
 
 # Build outputs
+/build/
 /dist/
 /release/
 *.fuiapp
@@ -10,6 +11,7 @@
 # Local state / scratch
 /.state*/
 /.tmp*/
+/.npm-cache/
 /.*.lock
 node_modules/
 

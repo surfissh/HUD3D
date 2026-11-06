@@ -200,8 +200,8 @@ const win = Window.create(p);    // 没有位置、朝向、锚点参数
 
 ![烤箱倒计时 HUD 的 PoC 运行画面](figures/oven-hud-poc.png)
 
-> 这是模拟器/Client 左眼预览的真实截图（640×480），不是设计稿。截图时倒计时显示 23:23，运行中按秒递减，说明文本、布局、秒级更新与呈现链路可用。
-> PoC 源码：[src/index.js](src/index.js)。为了便于观察，PoC 用了全屏排版；实际产品可以缩成右上角 200×100 的小卡片，其余保持黑色（透视）。
+> 这是模拟器/Client 左眼预览的真实截图（640×480），不是设计稿。截图中的倒计时正在按秒递减，说明文本、布局、秒级更新与呈现链路可用。
+> PoC 源码：[src/index.ts](src/index.ts)。为了便于观察，PoC 用了全屏排版；实际产品可以缩成右上角 200×100 的小卡片，其余保持黑色（透视）。
 
 **这个 PoC 证明了什么：**
 
@@ -375,14 +375,18 @@ const win = Window.create(p);    // 没有位置、朝向、锚点参数
 
 环境：Ubuntu 22.04/26.04（Kit 白名单）、Node.js **24.13.0**、npm **11.6.2**。
 
-仓库根目录就是应用工程：`src/`、`FusionUIApp.json`、`fusionui.config.json` 与
-`package.json` 放在一起。`.node-version` 由 Vite+ 管理，锁定 Node 24.13.0。
+仓库根目录就是应用工程：`src/`（TypeScript）、`FusionUIApp.json`、`fusionui.config.json`
+与 `package.json` 放在一起。`.node-version` 由 Vite+ 管理，锁定 Node 24.13.0；
+`verify`/`build` 会先用 `tsc` 编译到 `build/`，再交给 Kit。
 
 推荐用 `vp run`（自动使用 pin 的 Node）：
 
 ```bash
 vp env install      # 首次：安装 .node-version 指定的 Node
-vp run verify       # 校验 JS 与依赖元数据
+npm install         # 安装 TypeScript devDependency
+vp run typecheck    # 只做 TypeScript 类型检查
+vp run compile      # tsc -> build/
+vp run verify       # 类型检查 + 编译 + Kit test
 vp run build        # 构建到 dist/
 vp run package      # 生成未签名调试包 release/oven-hud.fuiapp
 vp run start        # 单目运行（模拟器）
@@ -390,7 +394,7 @@ vp run run:stereo   # 双目并排运行
 vp run dry-run      # 只打印启动计划，不拉起进程
 vp run doctor       # Kit 环境诊断
 vp run dev          # build + package + start
-vp run clean        # 删除 dist/ 与 release/
+vp run clean        # 删除 build/、dist/ 与 release/
 ```
 
 `npm run <script>` 同样可用：`scripts/kit.sh` 发现当前 Node 不是 24.13.0 时，

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "lib": [
+      "ES2022"
+    ],
+    "types": [],
+    "strict": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "paths": {
+      "@irisview/osx/os": [
+        "./IrisView-Developer-Kit-v1.0.0/sdk/public-api/os/index.d.ts"
+      ],
+      "@irisview/osx/fusionui": [
+        "./IrisView-Developer-Kit-v1.0.0/sdk/public-api/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
+  ]
+}

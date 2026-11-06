@@ -9,19 +9,22 @@
     "npm": "11.6.2"
   },
   "packageManager": "npm@11.6.2",
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
   "scripts": {
     "preflight": "node scripts/preflight.mjs",
-    "verify": "sh scripts/kit.sh test .",
+    "verify": "npm run compile && sh scripts/kit.sh test .",
     "test": "npm run verify",
-    "build": "sh scripts/kit.sh build .",
+    "build": "npm run compile && sh scripts/kit.sh build .",
     "package": "sh scripts/kit.sh package . --debug-unsigned --output release/oven-hud.fuiapp",
     "start": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent",
     "dev": "npm run build && npm run package && npm start",
     "run:stereo": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent --display-mode stereo",
     "dry-run": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent --dry-run",
     "doctor": "sh scripts/kit.sh doctor",
-    "clean": "rm -rf dist release"
+    "clean": "rm -rf build dist release",
+    "typecheck": "./node_modules/.bin/tsc -p tsconfig.json --noEmit",
+    "compile": "sh scripts/compile.sh"
   }
 }

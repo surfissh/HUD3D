@@ -46,6 +46,11 @@ if (!existsSync(path.join(kit, "bin", "irisview"))) {
   );
 }
 
+if (["test", "build"].includes(command) &&
+    !existsSync(path.join(root, "build", "index.js"))) {
+  fail("TypeScript 尚未编译", "先执行：npm run compile");
+}
+
 if (command === "package") {
   if (!existsSync(path.join(root, "dist", "linux")) ||
       !existsSync(path.join(root, "dist", "android"))) {
