@@ -1,0 +1,27 @@
+{
+  "name": "partner.oven-hud",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "IrisView kitchen countdown HUD (feasibility PoC)",
+  "engines": {
+    "node": "24.13.0",
+    "npm": "11.6.2"
+  },
+  "packageManager": "npm@11.6.2",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "preflight": "node scripts/preflight.mjs",
+    "verify": "sh scripts/kit.sh test .",
+    "test": "npm run verify",
+    "build": "sh scripts/kit.sh build .",
+    "package": "mkdir -p release && sh scripts/kit.sh package . --debug-unsigned --output release/oven-hud.fuiapp",
+    "start": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent",
+    "dev": "npm run build && npm run package && npm start",
+    "run:stereo": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent --display-mode stereo",
+    "dry-run": "sh scripts/kit.sh run release/oven-hud.fuiapp --allow-debug-unsigned --audio-mode silent --dry-run",
+    "doctor": "sh scripts/kit.sh doctor",
+    "clean": "rm -rf dist release"
+  }
+}

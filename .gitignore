@@ -1,0 +1,18 @@
+# Vendor bundles (large; keep them at the repo root as delivered)
+/IrisView-Developer-Kit-v1.0.0/
+/IrisView-Platform-Alpha-中英双语版-v3/
+
+# Build outputs
+/dist/
+/release/
+*.fuiapp
+
+# Local state / scratch
+/.state*/
+/.tmp*/
+node_modules/
+
+# Misc
+.DS_Store
+*.pyc
+__pycache__/
