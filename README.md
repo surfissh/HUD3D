@@ -46,7 +46,9 @@ scripts/preflight.mjs  调用 Kit 前的快速检查
 | `vp run clean` | 删除 `dist/` 与 `release/` |
 
 `npm run <script>` 同样可用：`scripts/kit.sh` 发现当前 Node 不是 24.13.0 时，
-会自动用 `vp env exec --node 24.13.0` 重新执行自己。
+会自动通过 Vite+ 解析 `.node-version` 并切换到 pin 的 Node。
+
+> `vp run` 会提示“项目未迁移到 Vite+”，可以忽略；这里只用它做 Node 版本管理与任务运行。
 
 ## 环境变量
 

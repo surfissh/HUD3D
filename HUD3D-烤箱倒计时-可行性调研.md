@@ -200,7 +200,7 @@ const win = Window.create(p);    // 没有位置、朝向、锚点参数
 
 ![烤箱倒计时 HUD 的 PoC 运行画面](figures/oven-hud-poc.png)
 
-> 这是模拟器/Client 左眼预览的真实截图（640×480），不是设计稿。截图时倒计时显示 23:06，运行中按秒递减，说明文本、布局、秒级更新与呈现链路可用。
+> 这是模拟器/Client 左眼预览的真实截图（640×480），不是设计稿。截图时倒计时显示 23:23，运行中按秒递减，说明文本、布局、秒级更新与呈现链路可用。
 > PoC 源码：[src/index.js](src/index.js)。为了便于观察，PoC 用了全屏排版；实际产品可以缩成右上角 200×100 的小卡片，其余保持黑色（透视）。
 
 **这个 PoC 证明了什么：**
@@ -394,7 +394,7 @@ vp run clean        # 删除 dist/ 与 release/
 ```
 
 `npm run <script>` 同样可用：`scripts/kit.sh` 发现当前 Node 不是 24.13.0 时，
-会自动用 `vp env exec --node 24.13.0` 重新执行自己。
+会自动通过 Vite+ 解析 `.node-version` 并切换到 pin 的 Node。
 
 脚本分层：
 
