@@ -216,7 +216,7 @@ function start(): void {
     22,
     13,
     55,
-    "partner.oven-hud · FusionUI / IrisView Developer Kit v1.0.0",
+    "partner.oven-hud · FusionUI / IrisView Developer Kit v1.0.1",
     TextAlign.LEFT_MID,
   );
 

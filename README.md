@@ -72,6 +72,13 @@ scripts/preflight.mjs  调用 Kit 前的快速检查
 `scripts/kit.sh` 默认把 `NPM_CONFIG_USERCONFIG` 指向 `/dev/null`，避免用户级
 `.npmrc` 干扰 Kit 的 npm 版本检查；需要自定义时显式设置该变量。
 
+## 版本与本地替换
+
+- 当前 `FusionUIApp.json` 为 `1.0.1` / `versionCode: 2`。
+- 源码变化会改变包字节；如果 `versionCode` 不变，Kit 默认拒绝替换已安装包。
+- 本地开发脚本 `start` / `run:stereo` / `dry-run` 已带 `--allow-debug-replace`，
+  方便反复迭代；正式发布前请提高 `FusionUIApp.json` 的 `version` 与 `versionCode`。
+
 ## 包管理
 
 应用保持零运行时依赖；`typescript` 只作为 devDependency 参与构建。

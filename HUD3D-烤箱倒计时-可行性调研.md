@@ -427,6 +427,9 @@ IRISVIEW_STATE_DIR=$PWD/.state vp run start
 - 构建需要精确的 Node 24.13.0 / npm 11.6.2；Kit 会在启动时校验版本，
   `vp run` 与 `scripts/kit.sh` 会自动切到 pin 的版本。
 - `package` 需要 Git 提交身份；本仓库已在根目录 `git init` 并完成初始提交。
+- 源码变化会改变包字节；`versionCode` 不变时 Kit 会拒绝替换已安装包。开发脚本已带
+  `--allow-debug-replace`，正式发布前提升 `FusionUIApp.json` 的 `version`/`versionCode`
+  （当前 `1.0.1` / `2`）。
 - 截图来自模拟器 release 配置的单目预览（左眼 640×480）。
 
 ## 附录 C：方法与局限
