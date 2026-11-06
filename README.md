@@ -26,6 +26,8 @@ scripts/preflight.mjs  调用 Kit 前的快速检查
   ```
 - **IrisView Developer Kit**：放在仓库根目录的 `IrisView-Developer-Kit-v1.0.0/`，
   或用 `IRISVIEW_KIT` 指向 Kit 根目录（该目录不入库）。
+- 调研报告中的文档链接指向 `IrisView-Platform-Alpha-中英双语版-v3/`（同样不入库）；
+  需要离线查阅时把该目录放回仓库根目录。
 - 推荐 Ubuntu 22.04/26.04。非白名单主机（如 Fedora）会由 `scripts/irisview.py`
   在开发模式下跳过 Kit 的 OS 检查，并打印警告；`IRISVIEW_STRICT_HOST=1` 可关闭。
 
@@ -58,6 +60,9 @@ scripts/preflight.mjs  调用 Kit 前的快速检查
 | `IRISVIEW_NODE_BIN` | 显式指定 Node 24.13.0 的 `bin` 目录，跳过 Vite+ 切换 |
 | `IRISVIEW_STATE_DIR` | Kit 的 state 目录（默认 `~/IrisView-Developer-Kit-Data`） |
 | `IRISVIEW_STRICT_HOST=1` | 不绕过 Kit 的 Ubuntu 白名单（用于验证官方检查） |
+
+`scripts/kit.sh` 默认把 `NPM_CONFIG_USERCONFIG` 指向 `/dev/null`，避免用户级
+`.npmrc` 干扰 Kit 的 npm 版本检查；需要自定义时显式设置该变量。
 
 ## 包管理
 
